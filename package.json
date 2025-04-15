@@ -1,0 +1,27 @@
+{
+  "name": "fitnessgroup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/typescript/bin/tsc && node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AradiFerenc/fitnessGroup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AradiFerenc/fitnessGroup/issues"
+  },
+  "homepage": "https://github.com/AradiFerenc/fitnessGroup#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

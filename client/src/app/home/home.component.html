@@ -1,0 +1,44 @@
+<div class="table-contatiner">
+  <table>
+    <thead>
+    <th>Name</th>
+    <th>Trainer</th>
+    <th>StartTime</th>
+    <th>EndTime</th>
+    <th>Description</th>
+    <th>Users</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let fitnessGroup of fitnessGroups">
+      <td>{{fitnessGroup.name}}</td>
+      <td>{{fitnessGroup.trainer}}</td>
+      <td>{{fitnessGroup.startTime}}</td>
+      <td>{{fitnessGroup.endTime}}</td>
+      <td>{{fitnessGroup.description}}</td>
+      <td>{{fitnessGroup.users.length}}</td>
+      <td *ngIf="this.authService.checkAuth() | async">
+        <button (click)="joinGroup(fitnessGroup._id)">Join</button>
+      </td>
+      <td *ngIf="this.authService.checkAdmin() | async">
+        <button (click)="delete(fitnessGroup._id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+  <form  class="form" *ngIf="this.authService.checkAdmin() | async" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <table class="table-contatiner" >
+        <tr>
+          <td><input formControlName="name" type="text" placeholder="Name" required></td>
+          <td>
+            <select formControlName="trainer" required>
+              <option value="" disabled selected>Select a trainer</option>
+              <option *ngFor="let trainer of trainers" [value]="trainer._id">{{trainer.name}}</option>
+            </select>
+          </td>
+          <td><input formControlName="startTime" type="time" placeholder="Start Time" required></td>
+          <td><input formControlName="endTime" type="time" placeholder="End Time" required></td>
+          <td><input formControlName="description" type="text" placeholder="Description"></td>
+          <td><button [disabled]="form.invalid" type="submit">Add</button></td>
+        </tr>
+    </table>
+  </form>
+</div>

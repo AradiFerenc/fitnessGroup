@@ -1,0 +1,12 @@
+<div class="registration-container">
+  <form class="registration-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <input formControlName="email" type="email" placeholder="Email" required [ngClass]="{'.invalid-input': !registerForm.get('email')?.errors}"/>
+    <input formControlName="password" type="password" placeholder="Password" required [ngClass]="{'.invalid-input': !registerForm.get('password')?.errors}" />
+    <div class="buttons">
+      <button [disabled]="registerForm.invalid" type="submit">Register</button>
+    </div>
+    <div class="buttons">
+      <button type="button" routerLink="/login">Already registered</button>
+    </div>
+  </form>
+</div>

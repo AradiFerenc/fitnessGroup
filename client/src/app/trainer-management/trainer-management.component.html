@@ -1,0 +1,31 @@
+<div class="table-contatiner">
+  <table>
+    <thead>
+    <th>Name</th>
+    <th>Reviews</th>
+    <th>Write a review</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let trainer of trainers">
+      <td>{{trainer.name}}</td>
+      <td><p *ngFor="let review of trainer.reviews">{{review}}</p><br/></td>
+      <td>
+        <form [formGroup]="reviewForm" (ngSubmit)="addReview(trainer._id)">
+          <input type="text" formControlName="review">
+          <button type="submit" [disabled]="!reviewForm.valid">Submit Review</button>
+        </form>
+      </td>
+      <td *ngIf="this.authService.checkAdmin() | async">
+        <button (click)="delete(trainer._id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+  <form  class="form" *ngIf="this.authService.checkAdmin() | async" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <table class="table-contatiner" >
+      <tr>
+        <td><input formControlName="name" type="text" placeholder="Name" required></td>
+        <td><button [disabled]="form.invalid" type="submit">Add</button></td>
+      </tr>
+    </table>
+  </form>
+</div>

@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a [routerLink]="['/']">Fitness App</a>
+    </div>
+    <div class="navbar-links">
+      <a [routerLink]="['/home']" routerLinkActive="active">Home</a>
+      <a [routerLink]="['/listusers']" routerLinkActive="active" *ngIf="this.authService.checkAdmin() | async">Users</a>
+      <a [routerLink]="['/listtrainers']" routerLinkActive="active" *ngIf="this.authService.checkAuth() | async">Trainers</a>
+      <a [routerLink]="['/profile']" routerLinkActive="active" *ngIf="this.authService.checkAuth() | async">Profile</a>
+      <a (click)="logout()" *ngIf="this.authService.checkAuth() | async" class="logout-btn">Logout</a>
+      <a [routerLink]="['/login']" *ngIf="!(this.authService.checkAuth() | async)">Login</a>
+    </div>
+  </div>
+</nav>

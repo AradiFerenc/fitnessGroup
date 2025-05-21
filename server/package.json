@@ -1,0 +1,36 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "node_modules/typescript/bin/tsc",
+    "start": "node build/index.js",
+    "serve": "node_modules/typescript/bin/tsc && node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.15.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "save": "^2.9.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.2",
+    "@types/express-session": "^1.18.1",
+    "@types/passport": "^1.0.17",
+    "@types/passport-local": "^1.0.38",
+    "express": "^5.1.0",
+    "typescript": "^5.8.3"
+  }
+}
